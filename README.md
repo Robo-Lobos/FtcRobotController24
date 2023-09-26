@@ -1,3 +1,7 @@
+## Welcome, RoboLobos
+This repo will be your hub for all thing programming this season. Remember to always push to your branch before you leave, and talk with Jack or Aiden before doing anything too wild.
+It'll take a bit to learn, but it will make your life much easier.
+
 ## NOTICE
 
 This repository contains the public FTC SDK for the CENTERSTAGE (2023-2024) competition season.
