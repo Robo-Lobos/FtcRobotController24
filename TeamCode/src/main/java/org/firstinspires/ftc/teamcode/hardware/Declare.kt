@@ -17,7 +17,7 @@ public class Declare {
         //game pad
         //some of these values may need to be negative
         //fix strafing with constant?
-        var drive = (gamepad1.left_stick_y).toDouble() //aka forward
+        var drive = -(gamepad1.left_stick_y).toDouble() //aka forward
         var strafe = (gamepad1.left_stick_x).toDouble() //aka sideways
         var turn = (gamepad1.right_stick_x).toDouble()
         private var one = (1).toDouble()
