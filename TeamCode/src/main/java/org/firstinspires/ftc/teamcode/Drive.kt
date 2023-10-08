@@ -19,6 +19,9 @@ class Drive : LinearOpMode() {
             Declare.frontRightMotor.power = (frp)
             Declare.backLeftMotor.power = (blp)
             Declare.backRightMotor.power = (brp)
+            telemetry.addData("Drive", Declare.drive)
+            telemetry.addData("Strafe", Declare.strafe)
+            telemetry.addData("Turn", Declare.turn)
         }
     }
 
