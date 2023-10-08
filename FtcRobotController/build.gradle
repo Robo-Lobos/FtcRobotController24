@@ -13,12 +13,12 @@ android {
         targetSdkVersion 28
         buildConfigField "String", "APP_BUILD_TIME", '"' + (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.ROOT).format(new Date())) + '"'
     }
+    compileSdk 34
 
-    compileSdkVersion 29
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility "17"
+        targetCompatibility "17"
     }
     namespace = 'com.qualcomm.ftcrobotcontroller'
 }

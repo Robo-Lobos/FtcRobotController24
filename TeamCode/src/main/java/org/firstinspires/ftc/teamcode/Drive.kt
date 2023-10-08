@@ -5,7 +5,7 @@ import org.firstinspires.ftc.teamcode.hardware.Declare
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode
 
 @TeleOp(name = "Drive")
-private class Drive : LinearOpMode() {
+class Drive : LinearOpMode() {
     // using some math to define power variables for each motor (only useful for omnidirectional wheels)
     // this creates a "robot-centric" direction system
     // flp = front left power, brp = back right power, etc.
