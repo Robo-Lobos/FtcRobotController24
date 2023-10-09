@@ -6,7 +6,7 @@ import org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.gamepad1
 import kotlin.math.abs
 import kotlin.math.max
 
-public class Declare {
+public class  Declare {
     companion object {
         // motors
         val frontLeftMotor = hardwareMap.get(DcMotor::class.java, "left_drive")
