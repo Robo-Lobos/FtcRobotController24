@@ -14,7 +14,7 @@ class Drive : LinearOpMode() {
     private val blp = (Declare.drive + Declare.strafe + Declare.turn) / Declare.drivescale
     private val brp = (Declare.drive - Declare.strafe - Declare.turn) / Declare.drivescale
     override fun runOpMode() {
-        while (opModeIsActive()) {
+        while (opModeIsActive()&&!isStopRequested) {
             Declare.frontLeftMotor.power = (flp)
             Declare.frontRightMotor.power = (frp)
             Declare.backLeftMotor.power = (blp)
