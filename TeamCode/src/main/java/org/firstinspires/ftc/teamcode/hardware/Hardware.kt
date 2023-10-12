@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple
 import java.lang.Double.max
 import kotlin.math.abs
 
-open class Hardware {
+open class Hardware constructor(myOpMode : opmode) {
 
     //declare objects
     private var myOpMode: LinearOpMode? = null
