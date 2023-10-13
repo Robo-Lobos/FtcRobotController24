@@ -1,27 +1,31 @@
 package org.firstinspires.ftc.teamcode
 
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp
-import org.firstinspires.ftc.teamcode.hardware.Declare
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp
+import org.firstinspires.ftc.teamcode.hardware.Hardware
 
 @TeleOp(name = "Drive")
 class Drive : LinearOpMode() {
-    // using some math to define power variables for each motor (only useful for omnidirectional wheels)
-    // this creates a "robot-centric" direction system
-    // flp = front left power, brp = back right power, etc.
-    private val flp = (Declare.drive - Declare.strafe - Declare.turn) / Declare.drivescale
-    private val frp = (Declare.drive + Declare.strafe + Declare.turn) / Declare.drivescale
-    private val blp = (Declare.drive + Declare.strafe + Declare.turn) / Declare.drivescale
-    private val brp = (Declare.drive - Declare.strafe - Declare.turn) / Declare.drivescale
+
+    //do this to access the "Hardware" class
+    private var hwmap = Hardware()
+
     override fun runOpMode() {
+        hwmap.init()
+        waitForStart()
         while (opModeIsActive()&&!isStopRequested) {
-            Declare.frontLeftMotor.power = (flp)
-            Declare.frontRightMotor.power = (frp)
-            Declare.backLeftMotor.power = (blp)
-            Declare.backRightMotor.power = (brp)
-            telemetry.addData("Drive", Declare.drive)
-            telemetry.addData("Strafe", Declare.strafe)
-            telemetry.addData("Turn", Declare.turn)
+            //set variables to controller
+            var drive = -(gamepad1.left_stick_y).toDouble() //aka forward
+            var strafe = (gamepad1.left_stick_x).toDouble() //aka sideways
+            var turn = (gamepad1.right_stick_x).toDouble()
+
+            //update telemetry
+            telemetry.addData("Drive", drive)
+            telemetry.addData("Strafe", strafe)
+            telemetry.addData("Turn", turn)
+
+            //send to motors
+            hwmap.driveRobot(drive, strafe, turn)
         }
     }
 

@@ -1,38 +1,41 @@
 package org.firstinspires.ftc.teamcode.hardware
 
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode
-import com.qualcomm.robotcore.eventloop.opmode.OpMode
 import com.qualcomm.robotcore.hardware.DcMotor
 import com.qualcomm.robotcore.hardware.DcMotorSimple
+import org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap
+import org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.telemetry
 import java.lang.Double.max
 import kotlin.math.abs
 
-open class Hardware constructor(myOpMode : opmode) {
+open class Hardware() {
 
-    //declare objects
-    private var myOpMode: LinearOpMode? = null
-    //private val frontLeftDrive: DcMotor? = null
-    //private val backLeftDrive: DcMotor? = null
-    //private val frontRightDrive: DcMotor? = null
-    //private val backRightDrive: DcMotor? = null
+    //declare global objects
+    //private var myOpMode: LinearOpMode? = null
+    var frontLeftMotor: DcMotor? = null
+    var backLeftMotor: DcMotor? = null
+    var frontRightMotor: DcMotor? = null
+    var backRightMotor: DcMotor? = null
 
-    class Hardware(var myOpMode: OpMode){
-        var myOpMode = Hardware()
-    }
+    // Define and Initialize Motors (note: need to use reference to actual OpMode).
 
     fun init() {
-        var frontLeftMotor = myOpMode!!.hardwareMap.get(DcMotor::class.java, "left_drive")
-        var frontRightMotor = myOpMode!!.hardwareMap.get(DcMotor::class.java, "right_drive")
-        var backLeftMotor = myOpMode!!.hardwareMap.dcMotor["backLeftMotor"]
-        var backRightMotor = myOpMode!!.hardwareMap.dcMotor["backRightMotor"]
+        //initialize motors
+        var frontLeftMotor: DcMotor = hardwareMap.dcMotor.get("left_drive")
+        var backLeftMotor: DcMotor = hardwareMap.dcMotor.get("backLeftMotor")
+        var frontRightMotor: DcMotor = hardwareMap.dcMotor.get("right_drive")
+        var backRightMotor: DcMotor = hardwareMap.dcMotor.get("backRightMotor")
 
         //reverse as needed (this may need to be the left wheels rather than the right)
         frontRightMotor.direction = (DcMotorSimple.Direction.REVERSE)
         backRightMotor.direction = (DcMotorSimple.Direction.REVERSE)
+
+        //update telemetry
+        telemetry.addData(">", "Hardware Initialized")
     }
 
     fun driveRobot(drive: Double, strafe: Double, turn: Double){
-        val drivescale = max(abs(drive) + abs(strafe) + abs(turn), 1.0)
+        val drivescale = max(abs(drive) + abs(strafe) + abs(turn), 1.0) //scale down if needed
+        //omnidirectional wheel math
         val flp = (drive - strafe - turn) / drivescale
         val frp = (drive + strafe + turn) / drivescale
         val blp = (drive + strafe + turn) / drivescale
@@ -41,11 +44,19 @@ open class Hardware constructor(myOpMode : opmode) {
         setDrivePower(flp, frp, blp, brp)
     }
 
-    private fun setDrivePower(flp: Double, frp: Double, blp: Double, brp: Double){
-        frontLeftMotor.power= flp
 
-
+    fun setDrivePower(flp: Double, frp: Double, blp: Double, brp: Double){
+        var frontLeftMotor: DcMotor = hardwareMap.dcMotor.get("left_drive")
+        var backLeftMotor: DcMotor = hardwareMap.dcMotor.get("backLeftMotor")
+        var frontRightMotor: DcMotor = hardwareMap.dcMotor.get("right_drive")
+        var backRightMotor: DcMotor = hardwareMap.dcMotor.get("backRightMotor")
+        frontLeftMotor.power = flp
+        frontRightMotor.power = frp
+        backLeftMotor.power = blp
+        backRightMotor.power = brp
     }
+
+
 
 //    init(HardwareMap hwMap) {
 //        // motors
