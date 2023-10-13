@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.hardware.Hardware
 class Drive : LinearOpMode() {
 
     //do this to access the "Hardware" class
-    private var hwmap = Hardware()
+    private var hwmap = Hardware(this)
 
     override fun runOpMode() {
         hwmap.init()
