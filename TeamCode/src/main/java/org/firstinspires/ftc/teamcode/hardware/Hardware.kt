@@ -52,7 +52,6 @@ open class Hardware(private var opMode: LinearOpMode) {
         myOpMode.telemetry.addData("Strafe", strafe)
         myOpMode.telemetry.addData("Turn", turn)
         myOpMode.telemetry.update()
-
     }
 }
 
