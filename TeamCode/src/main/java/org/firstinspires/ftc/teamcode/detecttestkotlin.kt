@@ -28,6 +28,7 @@
  */
 package org.firstinspires.ftc.teamcode
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp
 import org.firstinspires.ftc.robotcore.external.hardware.camera.BuiltinCameraDirection
@@ -42,7 +43,7 @@ import org.firstinspires.ftc.vision.tfod.TfodProcessor
  * Use Android Studio to Copy this Class, and Paste it into your team's code folder with a new name.
  * Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list.
  */
-@TeleOp(name = "Concept: TensorFlow Object Detection", group = "Concept") //@Disabled
+@Autonomous(name = "detecttestkotlin")
 
 class detecttestkotlin : LinearOpMode() {
     /**
@@ -138,7 +139,7 @@ class detecttestkotlin : LinearOpMode() {
         visionPortal = builder.build()
 
         // Set confidence threshold for TFOD recognitions, at any time.
-        //tfod.setMinResultConfidence(0.75f);
+        tfod!!.setMinResultConfidence(0.70f)
 
         // Disable or re-enable the TFOD processor at any time.
         //visionPortal.setProcessorEnabled(tfod, true);
