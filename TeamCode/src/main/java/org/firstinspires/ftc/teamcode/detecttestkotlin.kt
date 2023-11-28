@@ -65,17 +65,11 @@ class detecttestkotlin : LinearOpMode() {
         waitForStart()
         if (opModeIsActive()) {
             while (opModeIsActive()) {
+                visionPortal!!.resumeStreaming()
                 telemetryTfod()
 
                 // Push telemetry to the Driver Station.
                 telemetry.update()
-
-                // Save CPU resources; can resume streaming when needed.
-                if (gamepad1.dpad_down) {
-                    visionPortal!!.stopStreaming()
-                } else if (gamepad1.dpad_up) {
-                    visionPortal!!.resumeStreaming()
-                }
 
                 // Share the CPU.
                 sleep(20)
@@ -170,18 +164,21 @@ class detecttestkotlin : LinearOpMode() {
             if (x < 200){
                 val elementPosition: Int = 1
                 telemetry.addData("Game Element Position", elementPosition)
+                visionPortal!!.stopStreaming()
             }
             else {}
 
             if (x > 200 && x < 400){
                 val elementPosition: Int = 2
                 telemetry.addData("Game Element Position", elementPosition)
+                visionPortal!!.stopStreaming()
             }
             else {}
 
             if (x > 400){
                 val elementPosition: Int = 3
                 telemetry.addData("Game Element Position", elementPosition)
+                visionPortal!!.stopStreaming()
             }
             else {}
 
