@@ -42,7 +42,6 @@ class detecttestkotlin : LinearOpMode() {
         waitForStart()
         if (opModeIsActive()) {
             while (opModeIsActive()) {
-                visionPortal!!.resumeStreaming()
                 telemetryTfod()
 
                 // Push telemetry to the Driver Station.
@@ -50,13 +49,16 @@ class detecttestkotlin : LinearOpMode() {
 
                 when (elementPosition) {
                     1 -> {
-                        return //drive code
+                        telemetry.addData("logic test", elementPosition)
+                        //return //drive code
                     }
                     2 -> {
-                        return //drive code
+                        telemetry.addData("logic test", elementPosition)
+                        //return //drive code
                     }
                     3 -> {
-                        return //drive code
+                        telemetry.addData("logic test", elementPosition)
+                        //return //drive code
                     }
                     else -> {
                         //share the CPU.
