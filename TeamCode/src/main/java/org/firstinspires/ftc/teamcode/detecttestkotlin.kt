@@ -50,14 +50,17 @@ class detecttestkotlin : LinearOpMode() {
                 when (elementPosition) {
                     1 -> {
                         telemetry.addData("logic test", elementPosition)
+                            .strafeTo(newVector2d(13, 10))
                         //return //drive code
                     }
                     2 -> {
                         telemetry.addData("logic test", elementPosition)
+                            .forward(23)
                         //return //drive code
                     }
                     3 -> {
                         telemetry.addData("logic test", elementPosition)
+                            .strafeTo(newVector2d(13,-10))
                         //return //drive code
                     }
                     else -> {
