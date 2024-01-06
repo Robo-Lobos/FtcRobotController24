@@ -53,5 +53,9 @@ open class Hardware(private var opMode: LinearOpMode) {
         myOpMode.telemetry.addData("Turn", turn)
         myOpMode.telemetry.update()
     }
+
+    /**create two arm functions??
+    one for opmode, one for teleop?
+    *op mode arm function has multiple heights?*/
 }
 

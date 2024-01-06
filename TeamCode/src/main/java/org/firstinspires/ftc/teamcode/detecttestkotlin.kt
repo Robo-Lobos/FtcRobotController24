@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp
 import org.firstinspires.ftc.robotcore.external.hardware.camera.BuiltinCameraDirection
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName
+import org.firstinspires.ftc.teamcode.Trajectories.rrtraj.drive
 import org.firstinspires.ftc.vision.VisionPortal
 import org.firstinspires.ftc.vision.tfod.TfodProcessor
 
@@ -50,18 +51,17 @@ class detecttestkotlin : LinearOpMode() {
                 when (elementPosition) {
                     1 -> {
                         telemetry.addData("logic test", elementPosition)
-                            .strafeTo(newVector2d(13, 10))
-                        //return //drive code
+                        drive.followTrajectory(Trajectories.rrtraj.common1)
+                        //common traj, then specific traj for color/side
                     }
                     2 -> {
                         telemetry.addData("logic test", elementPosition)
-                            .forward(23)
-                        //return //drive code
+                        drive.followTrajectory(Trajectories.rrtraj.common2)
+                        //seperate teleop functions by color and side for easy driver use
                     }
                     3 -> {
                         telemetry.addData("logic test", elementPosition)
-                            .strafeTo(newVector2d(13,-10))
-                        //return //drive code
+                        drive.followTrajectory(Trajectories.rrtraj.common3)
                     }
                     else -> {
                         //share the CPU.
