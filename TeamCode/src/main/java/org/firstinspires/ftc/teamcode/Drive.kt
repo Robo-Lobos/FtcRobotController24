@@ -18,6 +18,14 @@ class Drive : LinearOpMode() {
 
             //send to drive function 😘
             hwmap.driveRobot(drive, strafe, turn)
+
+            //arm servo stuff
+            if (gamepad1.y){
+                hwmap.testservo()
+            }
+            if (gamepad1.a){
+                hwmap.servoreset()
+            }
         }
     }
 

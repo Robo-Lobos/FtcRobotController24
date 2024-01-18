@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.hardware
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode
 import com.qualcomm.robotcore.hardware.DcMotor
 import com.qualcomm.robotcore.hardware.DcMotorSimple
+import com.qualcomm.robotcore.hardware.Servo
 import java.lang.Double.max
 import kotlin.math.abs
 
@@ -14,6 +15,7 @@ open class Hardware(private var opMode: LinearOpMode) {
     private var backLeftMotor: DcMotor
     private var frontRightMotor: DcMotor
     private var backRightMotor: DcMotor
+    private var armServo: Servo
 
     init {
         myOpMode = opMode
@@ -22,6 +24,10 @@ open class Hardware(private var opMode: LinearOpMode) {
         backLeftMotor = myOpMode.hardwareMap.dcMotor.get("backLeftMotor")
         frontRightMotor = myOpMode.hardwareMap.dcMotor.get("right_drive")
         backRightMotor = myOpMode.hardwareMap.dcMotor.get("backRightMotor")
+
+        //servos
+        armServo = myOpMode.hardwareMap.servo.get("servo0")
+        armServo.scaleRange(0.0,0.75)
 
         //reverse as needed (this may need to be the left wheels rather than the right)
         frontRightMotor.direction = (DcMotorSimple.Direction.REVERSE)
@@ -57,5 +63,17 @@ open class Hardware(private var opMode: LinearOpMode) {
     /**create two arm functions??
     one for opmode, one for teleop?
     *op mode arm function has multiple heights?*/
+
+    fun testservo(){
+        armServo.direction = Servo.Direction.FORWARD
+        armServo.position = 0.18
+        myOpMode.telemetry.addData("Servo Position", armServo.position)
+    }
+
+    fun servoreset(){
+        armServo.direction = Servo.Direction.REVERSE
+        armServo.position = 0.07
+        myOpMode.telemetry.addData("Servo Position", armServo.position)
+    }
 }
 
