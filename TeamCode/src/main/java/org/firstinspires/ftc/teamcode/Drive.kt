@@ -22,9 +22,11 @@ class Drive : LinearOpMode() {
             //arm servo stuff
             if (gamepad1.y){
                 hwmap.testservo()
+                telemetry.addData("Servo OPEN", 1)
             }
             if (gamepad1.a){
                 hwmap.servoreset()
+                telemetry.addData("Servo CLOSED", 0)
             }
         }
     }

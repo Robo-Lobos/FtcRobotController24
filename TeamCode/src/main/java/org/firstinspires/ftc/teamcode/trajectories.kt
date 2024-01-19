@@ -5,10 +5,25 @@ import com.acmerobotics.roadrunner.trajectory.Trajectory
 import org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive
 
+
 class Trajectories {
     object rrtraj{
         //call trajectory builder function from drive
         var drive: SampleMecanumDrive  = SampleMecanumDrive(hardwareMap)
+
+        /**
+         * somehow squeeze drive.setPoseEstimate(startPose) in there??
+         *
+         * RR and meepmeep use a FIELD-centric coordinate system
+         * meaning we have to specify where the robot starts with the startpose() command
+         * be mindful when making the four separate drive programs (innerblue, outerred, etc.)
+         *
+         */
+
+
+        //all possible starting positions (poses)
+        var outerblue: Pose2d? = Pose2d(-36.0, -70.0, Math.toRadians(90.0))
+        var outerred: Pose2d? = Pose2d(-36.0, 70.0, Math.toRadians(270.0))
 
 
         //common trajectories for cat positions 1, 2, and 3.
@@ -28,7 +43,7 @@ class Trajectories {
             .build()
 
         //pixel backboard trajectories for all possible robot and cat positions
-        var innerblue1: Trajectory = drive.trajectoryBuilder(Pose2d())
+        var innerblue1: Trajectory = drive.trajectoryBuilder(common1.end())
             //blah blah
             .build()
 
@@ -40,7 +55,7 @@ class Trajectories {
             //blah blah
             .build()
 
-        var outerblue1: Trajectory = drive.trajectoryBuilder(Pose2d())
+        var outerblue1: Trajectory = drive.trajectoryBuilder(common1.end())
             //blah blah
             .build()
 

@@ -27,7 +27,7 @@ open class Hardware(private var opMode: LinearOpMode) {
 
         //servos
         armServo = myOpMode.hardwareMap.servo.get("servo0")
-        armServo.scaleRange(0.0,0.75)
+        armServo.scaleRange(0.0,0.75) //DO NOT CHANGE
 
         //reverse as needed (this may need to be the left wheels rather than the right)
         frontRightMotor.direction = (DcMotorSimple.Direction.REVERSE)
@@ -66,13 +66,13 @@ open class Hardware(private var opMode: LinearOpMode) {
 
     fun testservo(){
         armServo.direction = Servo.Direction.FORWARD
-        armServo.position = 0.18
+        armServo.position = 0.18 //DO NOT CHANGE
         myOpMode.telemetry.addData("Servo Position", armServo.position)
     }
 
     fun servoreset(){
         armServo.direction = Servo.Direction.REVERSE
-        armServo.position = 0.07
+        armServo.position = 0.07 //DO NOT CHANGE
         myOpMode.telemetry.addData("Servo Position", armServo.position)
     }
 }

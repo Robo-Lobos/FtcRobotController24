@@ -51,6 +51,7 @@ class detecttestkotlin : LinearOpMode() {
                 when (elementPosition) {
                     1 -> {
                         telemetry.addData("logic test", elementPosition)
+                        //drive.setPoseEstimate(startPose) **figure this out??**
                         drive.followTrajectory(Trajectories.rrtraj.common1)
                         //common traj, then specific traj for color/side
                     }
