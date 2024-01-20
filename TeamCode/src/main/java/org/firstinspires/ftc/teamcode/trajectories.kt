@@ -10,6 +10,7 @@ class Trajectories {
     object rrtraj{
         //call trajectory builder function from drive
         var drive: SampleMecanumDrive  = SampleMecanumDrive(hardwareMap)
+        val absYVal: Double = 58.5 //think about where robot will be placed FIX AFTER BOT BUILT
 
         /**
          * somehow squeeze drive.setPoseEstimate(startPose) in there??
@@ -26,68 +27,52 @@ class Trajectories {
         var outerred: Pose2d? = Pose2d(-36.0, 70.0, Math.toRadians(270.0))
 
 
-        //common trajectories for cat positions 1, 2, and 3.
-        var common1: Trajectory = drive.trajectoryBuilder(Pose2d())
-            .strafeTo(Vector2d(13.0, 10.0))
-            //blah blah
-            .build()
-
-        var common2: Trajectory = drive.trajectoryBuilder(Pose2d())
-            .forward(23.0)
-            //blah blah
-            .build()
-
-        var common3: Trajectory = drive.trajectoryBuilder(Pose2d())
-            .strafeTo(Vector2d(13.0,-10.0))
-            //blah blah
-            .build()
-
         //pixel backboard trajectories for all possible robot and cat positions
-        var innerblue1: Trajectory = drive.trajectoryBuilder(common1.end())
+        var innerblue1: Trajectory = drive.trajectoryBuilder(Pose2d(12.0, -absYVal, Math.toRadians(90.0))) //fix pose
             //blah blah
             .build()
 
-        var innerblue2: Trajectory = drive.trajectoryBuilder(Pose2d())
+        var innerblue2: Trajectory = drive.trajectoryBuilder(Pose2d(12.0, -absYVal, Math.toRadians(90.0)))
             //blah blah
             .build()
 
-        var innerblue3: Trajectory = drive.trajectoryBuilder(Pose2d())
+        var innerblue3: Trajectory = drive.trajectoryBuilder(Pose2d(12.0, -absYVal, Math.toRadians(90.0)))
             //blah blah
             .build()
 
-        var outerblue1: Trajectory = drive.trajectoryBuilder(common1.end())
+        var outerblue1: Trajectory = drive.trajectoryBuilder(Pose2d(-36.0, -absYVal, Math.toRadians(90.0)))
             //blah blah
             .build()
 
-        var outerblue2: Trajectory = drive.trajectoryBuilder(Pose2d())
+        var outerblue2: Trajectory = drive.trajectoryBuilder(Pose2d(-36.0, -absYVal, Math.toRadians(90.0)))
             //blah blah
             .build()
 
-        var outerblue3: Trajectory = drive.trajectoryBuilder(Pose2d())
+        var outerblue3: Trajectory = drive.trajectoryBuilder(Pose2d(-36.0, -absYVal, Math.toRadians(90.0)))
             //blah blah
             .build()
 
-        var innerred1: Trajectory = drive.trajectoryBuilder(Pose2d())
+        var innerred1: Trajectory = drive.trajectoryBuilder(Pose2d(12.0, absYVal, Math.toRadians(270.0)))
             //blah blah
             .build()
 
-        var innerred2: Trajectory = drive.trajectoryBuilder(Pose2d())
+        var innerred2: Trajectory = drive.trajectoryBuilder(Pose2d(12.0, absYVal, Math.toRadians(270.0)))
             //blah blah
             .build()
 
-        var innerred3: Trajectory = drive.trajectoryBuilder(Pose2d())
+        var innerred3: Trajectory = drive.trajectoryBuilder(Pose2d(12.0, absYVal, Math.toRadians(270.0)))
             //blah blah
             .build()
 
-        var outerred1: Trajectory = drive.trajectoryBuilder(Pose2d())
+        var outerred1: Trajectory = drive.trajectoryBuilder(Pose2d(-36.0, absYVal, Math.toRadians(270.0)))
             //blah blah
             .build()
 
-        var outerred2: Trajectory = drive.trajectoryBuilder(Pose2d())
+        var outerred2: Trajectory = drive.trajectoryBuilder(Pose2d(-36.0, absYVal, Math.toRadians(270.0)))
             //blah blah
             .build()
 
-        var outerred3: Trajectory = drive.trajectoryBuilder(Pose2d())
+        var outerred3: Trajectory = drive.trajectoryBuilder(Pose2d(-36.0, absYVal, Math.toRadians(270.0)))
             //blah blah
             .build()
     }
