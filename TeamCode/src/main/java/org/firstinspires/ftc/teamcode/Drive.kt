@@ -16,7 +16,7 @@ class Drive : LinearOpMode() {
             var strafe = (gamepad1.left_stick_x).toDouble() //aka sideways
             var turn = (gamepad1.right_stick_x).toDouble()
 
-            //send to drive function  that is still here lmao
+            //send to drive function that is still here lmao
             hwmap.driveRobot(drive, strafe, turn)
 
             //arm servo stuff (is our arm servo based?)

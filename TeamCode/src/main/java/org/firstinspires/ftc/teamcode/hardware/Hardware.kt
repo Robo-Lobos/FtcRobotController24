@@ -22,8 +22,8 @@ open class Hardware(private var opMode: LinearOpMode) {
         //initialize motors
         frontLeftMotor = myOpMode.hardwareMap.dcMotor.get("motor0")
         backLeftMotor = myOpMode.hardwareMap.dcMotor.get("motor1")
-        frontRightMotor = myOpMode.hardwareMap.dcMotor.get("motor3")
-        backRightMotor = myOpMode.hardwareMap.dcMotor.get("motor4")
+        frontRightMotor = myOpMode.hardwareMap.dcMotor.get("motor2")
+        backRightMotor = myOpMode.hardwareMap.dcMotor.get("motor3")
 
         //servos
         armServo = myOpMode.hardwareMap.servo.get("servo0")
