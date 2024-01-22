@@ -52,17 +52,17 @@ class detecttestkotlin : LinearOpMode() {
                     1 -> {
                         telemetry.addData("logic test", elementPosition)
                         //drive.setPoseEstimate(startPose) **figure this out??**
-                        drive.followTrajectory(Trajectories.rrtraj.common1)
-                        //common traj, then specific traj for color/side
+                        drive.followTrajectory(Trajectories.rrtraj.innerblue1)//CHANGE PER FILE
+                        //common traj, then specific traj for color/side // THIS IS STUPID, EASIER TO WRITE 12 PATHS
                     }
                     2 -> {
                         telemetry.addData("logic test", elementPosition)
-                        drive.followTrajectory(Trajectories.rrtraj.common2)
-                        //seperate teleop functions by color and side for easy driver use
+                        drive.followTrajectory(Trajectories.rrtraj.innerblue2)//
+                        //separate teleop functions by color and side for easy driver use
                     }
                     3 -> {
                         telemetry.addData("logic test", elementPosition)
-                        drive.followTrajectory(Trajectories.rrtraj.common3)
+                        drive.followTrajectory(Trajectories.rrtraj.innerblue3)//
                     }
                     else -> {
                         //share the CPU.
