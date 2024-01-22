@@ -20,10 +20,10 @@ open class Hardware(private var opMode: LinearOpMode) {
     init {
         myOpMode = opMode
         //initialize motors
-        frontLeftMotor = myOpMode.hardwareMap.dcMotor.get("left_drive")
-        backLeftMotor = myOpMode.hardwareMap.dcMotor.get("backLeftMotor")
-        frontRightMotor = myOpMode.hardwareMap.dcMotor.get("right_drive")
-        backRightMotor = myOpMode.hardwareMap.dcMotor.get("backRightMotor")
+        frontLeftMotor = myOpMode.hardwareMap.dcMotor.get("motor0")
+        backLeftMotor = myOpMode.hardwareMap.dcMotor.get("motor1")
+        frontRightMotor = myOpMode.hardwareMap.dcMotor.get("motor3")
+        backRightMotor = myOpMode.hardwareMap.dcMotor.get("motor4")
 
         //servos
         armServo = myOpMode.hardwareMap.servo.get("servo0")
@@ -74,6 +74,12 @@ open class Hardware(private var opMode: LinearOpMode) {
         armServo.direction = Servo.Direction.REVERSE
         armServo.position = 0.07 //DO NOT CHANGE
         myOpMode.telemetry.addData("Servo Position", armServo.position)
+    }
+
+    fun test(){
+        testservo()
+        myOpMode.sleep(1000)
+        servoreset()
     }
 }
 

@@ -63,14 +63,20 @@ public class MeepMeepTesting {
                                 // .splineToConstantHeading(new Vector2d(-36.0, -60.4), Math.toRadians(90))
 
                                 .splineToConstantHeading(new Vector2d(-50.0, -30.0), Math.toRadians(90))
+                                /*SLICE HERE!*/
                                 .turn(Math.toRadians(-90)) //can't be called in a trajectory
+                                /*SLICE HERE!*/
                                 .waitSeconds(1)
                                 .lineTo(new Vector2d(-34.5, -30.0))
                                 .waitSeconds(2)
+                                /*SLICE HERE!*/
                                 .lineTo(new Vector2d(-39.0, -30.0))
-                               // .splineTo(new Vector2d(-45.86, -52.65), Math.toRadians(200.92))
+                                /*SLICE HERE!*/
+                                // .splineTo(new Vector2d(-45.86, -52.65), Math.toRadians(200.92))
                                 //.splineTo(new Vector2d(-55.25, -15.96), Math.toRadians(101.98))
                                 //.splineTo(new Vector2d(-34.00, -0.00), Math.toRadians(0.00))
+
+
                                 .splineToConstantHeading(new Vector2d(-50.00, -4.00), Math.toRadians(0.00))
                                 .splineToConstantHeading(new Vector2d(-34.00, -0.00), Math.toRadians(0.00))
 
@@ -93,9 +99,66 @@ public class MeepMeepTesting {
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 15)
                 .followTrajectorySequence(drive ->
+                        drive.trajectorySequenceBuilder(new Pose2d(12.0, -58.5, Math.toRadians(90)))
+                                .waitSeconds(1)
+                                .splineTo(new Vector2d(26.5, -32.00), Math.toRadians(90.0))
+                                /*SLICE HERE!*/
+                                .turn(Math.toRadians(90))
+                                /*SLICE HERE!*/
+                                .splineTo(new Vector2d(10.00, -32.00), Math.toRadians(180.00))
+                                .waitSeconds(1)
+                                .splineToConstantHeading(new Vector2d(20.00, -32.00), Math.toRadians(180.00))
+                                .waitSeconds(1)
+                                .turn(Math.toRadians(-180.0))
+                                .splineTo(new Vector2d(49.20, -29.00), Math.toRadians(0.00))
+
+                                .build()
+                );
+
+        RoadRunnerBotEntity innerblue2 = new DefaultBotBuilder(meepMeep)
+                // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
+                .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 15)
+                .followTrajectorySequence(drive ->
                                 drive.trajectorySequenceBuilder(new Pose2d(12.0, -58.5, Math.toRadians(90)))
                                         .waitSeconds(1)
+                                        .splineTo(new Vector2d(12.00, -34.50), Math.toRadians(90.00))
+                                        .waitSeconds(3)
+                                        .splineToConstantHeading(new Vector2d(12.00, -58.50), Math.toRadians(90.00))
+                                        .waitSeconds(1)
+                                        .splineTo(new Vector2d(48.50, -35.00), Math.toRadians(0.00))
+
                                         .build()
+                );
+
+        RoadRunnerBotEntity innerblue3 = new DefaultBotBuilder(meepMeep)
+                // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
+                .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 15)
+                .followTrajectorySequence(drive ->
+                        drive.trajectorySequenceBuilder(new Pose2d(12.0, -58.5, Math.toRadians(90)))
+                                .waitSeconds(1)
+                                .splineTo(new Vector2d(20.30, -43.50), Math.toRadians(68.05))
+                                .waitSeconds(1)
+                                .splineToConstantHeading(new Vector2d(29.08, -60.05), Math.toRadians(-11.67))
+                                .splineToLinearHeading(new Pose2d(48.50, -42.00, Math.toRadians(0.00)), Math.toRadians(0.00))
+
+                                .build()
+                );
+
+
+
+        RoadRunnerBotEntity innerred2 = new DefaultBotBuilder(meepMeep)
+                // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
+                .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 15)
+                .followTrajectorySequence(drive ->
+                        drive.trajectorySequenceBuilder(new Pose2d(12.0, 58.5, Math.toRadians(270)))
+                                .waitSeconds(1)
+                                .splineTo(new Vector2d(12.00, 34.50), Math.toRadians(270.00))
+                                .waitSeconds(3)
+                                .splineToConstantHeading(new Vector2d(12.00, 58.50), Math.toRadians(270.00))
+                                .waitSeconds(1)
+                                .splineTo(new Vector2d(48.50, 35.00), Math.toRadians(0.00))
+
+                                .build()
                 );
 
         // LEARN TO SPLIT TRAJECTORIES EVENTUALLY
@@ -105,8 +168,8 @@ public class MeepMeepTesting {
         meepMeep.setBackground(MeepMeep.Background.FIELD_CENTERSTAGE_JUICE_DARK)
                 .setDarkMode(true)
                 .setBackgroundAlpha(0.95f)
-                .addEntity(outerblue3)
-                //.addEntity(myBot3)
+                .addEntity(innerred2)
+                //.addEntity(innerblue3)
                 .start();
     }
 }

@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode
 
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode
+import  com.qualcomm.robotcore.eventloop.opmode.LinearOpMode
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp
 import org.firstinspires.ftc.teamcode.hardware.Hardware
 
@@ -16,10 +16,10 @@ class Drive : LinearOpMode() {
             var strafe = (gamepad1.left_stick_x).toDouble() //aka sideways
             var turn = (gamepad1.right_stick_x).toDouble()
 
-            //send to drive function 😘
+            //send to drive function  that is still here lmao
             hwmap.driveRobot(drive, strafe, turn)
 
-            //arm servo stuff
+            //arm servo stuff (is our arm servo based?)
             if (gamepad1.y){
                 hwmap.testservo()
                 telemetry.addData("Servo OPEN", 1)
@@ -27,6 +27,9 @@ class Drive : LinearOpMode() {
             if (gamepad1.a){
                 hwmap.servoreset()
                 telemetry.addData("Servo CLOSED", 0)
+            }
+            if (gamepad1.x){
+                hwmap.test()
             }
         }
     }
