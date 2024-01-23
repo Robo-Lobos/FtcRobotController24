@@ -6,6 +6,10 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple
 import com.qualcomm.robotcore.hardware.Servo
 import java.lang.Double.max
 import kotlin.math.abs
+import kotlin.math.atan2
+import kotlin.math.cos
+import kotlin.math.hypot
+import kotlin.math.sin
 
 open class Hardware(private var opMode: LinearOpMode) {
 
@@ -40,12 +44,26 @@ open class Hardware(private var opMode: LinearOpMode) {
     }
 
     fun driveRobot(drive: Double, strafe: Double, turn: Double) {
-        val drivescale = max(abs(drive) + abs(strafe) + abs(turn), 1.0) //scale down if needed
+        //magic of trig
+        val theta = atan2(drive, strafe)
+        val power = hypot(strafe, drive)
+
+        val sin = sin(theta - Math.PI/4)
+        val cos = cos(theta - Math.PI/4)
+        val max = max(abs(sin), abs(cos))
+
         //omnidirectional wheel math
-        val flp = (drive - strafe - turn) / drivescale
-        val frp = (drive + strafe + turn) / drivescale
-        val blp = (drive + strafe + turn) / drivescale
-        val brp = (drive - strafe - turn) / drivescale
+        var flp = power * cos/max + turn
+        var frp = power * sin/max - turn
+        var blp = power * sin/max + turn
+        var brp = power * cos/max - turn
+
+        if(power + abs(turn) >1){
+            flp /= power + turn
+            frp /= power + turn
+            blp /= power + turn
+            brp /= power + turn
+        }
 
         //send values to motors
         frontLeftMotor.power = flp
