@@ -71,8 +71,8 @@ open class Hardware(private var opMode: LinearOpMode) {
 
         //send values to motors
         frontLeftMotor.power = flp
-        frontRightMotor.power = frp *1.2
-        backLeftMotor.power = blp *1.2
+        frontRightMotor.power = frp
+        backLeftMotor.power = blp
         backRightMotor.power = brp
 
         //update telemetry
