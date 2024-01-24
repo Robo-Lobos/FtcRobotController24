@@ -13,6 +13,10 @@ import kotlin.math.sin
 
 open class Hardware(private var opMode: LinearOpMode) {
 
+
+    //.\adb connect 192.168.43.1:5555
+
+
     //declare global objects
     private var myOpMode: LinearOpMode = opMode
     private var frontLeftMotor: DcMotor
@@ -25,8 +29,8 @@ open class Hardware(private var opMode: LinearOpMode) {
         myOpMode = opMode
         //initialize motors
         frontLeftMotor = myOpMode.hardwareMap.dcMotor.get("motor0")
-        backLeftMotor = myOpMode.hardwareMap.dcMotor.get("motor1")
-        frontRightMotor = myOpMode.hardwareMap.dcMotor.get("motor2")
+        backLeftMotor = myOpMode.hardwareMap.dcMotor.get("motor1") //S
+        frontRightMotor = myOpMode.hardwareMap.dcMotor.get("motor2") //S
         backRightMotor = myOpMode.hardwareMap.dcMotor.get("motor3")
 
         //servos
@@ -34,8 +38,8 @@ open class Hardware(private var opMode: LinearOpMode) {
         armServo.scaleRange(0.0,0.75) //DO NOT CHANGE
 
         //reverse as needed (this may need to be the left wheels rather than the right)
-        frontRightMotor.direction = (DcMotorSimple.Direction.REVERSE)
-        backRightMotor.direction = (DcMotorSimple.Direction.REVERSE)
+        frontLeftMotor.direction = (DcMotorSimple.Direction.REVERSE)
+        backLeftMotor.direction = (DcMotorSimple.Direction.REVERSE)
 
         //update telemetry
         val message = "Hardware Initialized"
@@ -67,8 +71,8 @@ open class Hardware(private var opMode: LinearOpMode) {
 
         //send values to motors
         frontLeftMotor.power = flp
-        frontRightMotor.power = frp
-        backLeftMotor.power = blp
+        frontRightMotor.power = frp *1.2
+        backLeftMotor.power = blp *1.2
         backRightMotor.power = brp
 
         //update telemetry
