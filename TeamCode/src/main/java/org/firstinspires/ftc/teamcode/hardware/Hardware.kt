@@ -33,13 +33,18 @@ open class Hardware(private var opMode: LinearOpMode) {
         frontRightMotor = myOpMode.hardwareMap.dcMotor.get("motor2") //S
         backRightMotor = myOpMode.hardwareMap.dcMotor.get("motor3")
 
+        frontLeftMotor.mode = DcMotor.RunMode.RUN_USING_ENCODER
+        backLeftMotor.mode = DcMotor.RunMode.RUN_USING_ENCODER
+        frontRightMotor.mode = DcMotor.RunMode.RUN_USING_ENCODER
+        backRightMotor.mode = DcMotor.RunMode.RUN_USING_ENCODER
+
         //servos
         armServo = myOpMode.hardwareMap.servo.get("servo0")
         armServo.scaleRange(0.0,0.75) //DO NOT CHANGE
 
         //reverse as needed (this may need to be the left wheels rather than the right)
-        frontLeftMotor.direction = (DcMotorSimple.Direction.REVERSE)
-        backLeftMotor.direction = (DcMotorSimple.Direction.REVERSE)
+        frontRightMotor.direction = (DcMotorSimple.Direction.REVERSE)
+        backRightMotor.direction = (DcMotorSimple.Direction.REVERSE)
 
         //update telemetry
         val message = "Hardware Initialized"
