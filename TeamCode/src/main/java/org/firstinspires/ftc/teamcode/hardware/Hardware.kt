@@ -25,22 +25,32 @@ open class Hardware(private var opMode: LinearOpMode) {
     private var frontRightMotor: DcMotor
     private var backRightMotor: DcMotor
     private var armBeltMotor: DcMotorEx
+    private var pulleyMotor1: DcMotorEx
+    private var pulleyMotor2: DcMotorEx
     private var armServo: Servo
 
     init {
         myOpMode = opMode
         //initialize motors
+
+        //drivetrain motors
         frontLeftMotor = myOpMode.hardwareMap.dcMotor.get("motor0")
         backLeftMotor = myOpMode.hardwareMap.dcMotor.get("motor1") //S
         frontRightMotor = myOpMode.hardwareMap.dcMotor.get("motor2") //S
         backRightMotor = myOpMode.hardwareMap.dcMotor.get("motor3")
+
+        //arm motors
         armBeltMotor = myOpMode.hardwareMap.dcMotor.get("motor0b") as DcMotorEx
+        pulleyMotor1 = myOpMode.hardwareMap.dcMotor.get("motor1b") as DcMotorEx
+        pulleyMotor2 = myOpMode.hardwareMap.dcMotor.get("motor2b") as DcMotorEx
 
         frontLeftMotor.mode = DcMotor.RunMode.RUN_USING_ENCODER
         backLeftMotor.mode = DcMotor.RunMode.RUN_USING_ENCODER
         frontRightMotor.mode = DcMotor.RunMode.RUN_USING_ENCODER
         backRightMotor.mode = DcMotor.RunMode.RUN_USING_ENCODER
         armBeltMotor.mode = DcMotor.RunMode.RUN_TO_POSITION
+        pulleyMotor1.mode = DcMotor.RunMode.RUN_TO_POSITION
+        pulleyMotor2.mode = DcMotor.RunMode.RUN_TO_POSITION
 
         //servos
         armServo = myOpMode.hardwareMap.servo.get("servo0")
@@ -124,18 +134,33 @@ open class Hardware(private var opMode: LinearOpMode) {
             1 -> {
                 armBeltMotor.power = 0.5
                 armBeltMotor.targetPosition = 0
+
+                pulleyMotor1.power = 0.5
+                pulleyMotor1.targetPosition = 0
+                pulleyMotor2.power = pulleyMotor1.power
+                pulleyMotor2.targetPosition = pulleyMotor1.targetPosition
                 //lowest height
             }
 
             2 -> {
                 armBeltMotor.power = 0.5
                 armBeltMotor.targetPosition = 0
+
+                pulleyMotor1.power = 0.5
+                pulleyMotor1.targetPosition = 0
+                pulleyMotor2.power = pulleyMotor1.power
+                pulleyMotor2.targetPosition = pulleyMotor1.targetPosition
                 //medium height
             }
 
             3 -> {
                 armBeltMotor.power = 0.5
                 armBeltMotor.targetPosition = 0
+
+                pulleyMotor1.power = 0.5
+                pulleyMotor1.targetPosition = 0
+                pulleyMotor2.power = pulleyMotor1.power
+                pulleyMotor2.targetPosition = pulleyMotor1.targetPosition
                 //tallest height
             }
         }
