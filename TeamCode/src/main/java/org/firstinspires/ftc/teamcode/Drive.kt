@@ -32,17 +32,22 @@ class Drive : LinearOpMode() {
                 hwmap.test()
             }
 
-            if (gamepad2.y) {
-                hwmap.arm(3)
-            }
+            //arm stuff
+            var linearMotionPower = -(gamepad2.left_stick_y).toDouble()
+            var beltMotorPower = -(gamepad2.right_stick_y).toDouble()
+            hwmap.arm(linearMotionPower, beltMotorPower)
 
-            if (gamepad2.a || gamepad2.b) {
-                hwmap.arm(2)
-            }
-
-            if (gamepad2.x) {
-                hwmap.arm(1)
-            }
+//            if (gamepad2.y) {
+//                hwmap.arm(3)
+//            }
+//
+//            if (gamepad2.a || gamepad2.b) {
+//                hwmap.arm(2)
+//            }
+//
+//            if (gamepad2.x) {
+//                hwmap.arm(1)
+//            }
         }
 
     }
