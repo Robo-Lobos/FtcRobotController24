@@ -71,7 +71,7 @@ public class SampleMecanumDrive extends MecanumDrive {
 
     private TrajectoryFollower follower;
 
-    private DcMotorEx leftFront, leftRear, rightRear, rightFront;
+    private DcMotorEx frontLeftMotor, backLeftMotor, backRightMotor, frontRightMotor;
     private List<DcMotorEx> motors;
 
     private IMU imu;
@@ -95,13 +95,16 @@ public class SampleMecanumDrive extends MecanumDrive {
         }
 
         // TODO: adjust the names of the following hardware devices to match your configuration
+        DcMotorEx frontLeftMotor;
+        frontLeftMotor = hardwareMap.get(DcMotorEx.class, "motor0");
+        DcMotorEx backLeftMotor;
+        backLeftMotor = hardwareMap.get(DcMotorEx.class, "motor1");
+        DcMotorEx frontRightMotor;
+        frontRightMotor = hardwareMap.get(DcMotorEx.class, "motor2");
+        DcMotorEx backRightMotor;
+        backRightMotor = hardwareMap.get(DcMotorEx.class, "motor3");
 
-        leftFront = hardwareMap.get(DcMotorEx.class, "leftFront");
-        leftRear = hardwareMap.get(DcMotorEx.class, "leftRear");
-        rightRear = hardwareMap.get(DcMotorEx.class, "rightRear");
-        rightFront = hardwareMap.get(DcMotorEx.class, "rightFront");
-
-        motors = Arrays.asList(leftFront, leftRear, rightRear, rightFront);
+        motors = Arrays.asList(frontLeftMotor, frontRightMotor, backLeftMotor, backRightMotor);
 
         for (DcMotorEx motor : motors) {
             MotorConfigurationType motorConfigurationType = motor.getMotorType().clone();
@@ -279,10 +282,10 @@ public class SampleMecanumDrive extends MecanumDrive {
 
     @Override
     public void setMotorPowers(double v, double v1, double v2, double v3) {
-        leftFront.setPower(v);
-        leftRear.setPower(v1);
-        rightRear.setPower(v2);
-        rightFront.setPower(v3);
+        frontLeftMotor.setPower(v);
+        backLeftMotor.setPower(v1);
+        backRightMotor.setPower(v2);
+        frontRightMotor.setPower(v3);
     }
 
     @Override
