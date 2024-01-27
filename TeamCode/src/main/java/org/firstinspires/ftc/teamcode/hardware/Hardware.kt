@@ -20,10 +20,10 @@ open class Hardware(private var opMode: LinearOpMode) {
 
     //declare global objects
     private var myOpMode: LinearOpMode = opMode
-    private var frontLeftMotor: DcMotor
-    private var backLeftMotor: DcMotor
-    private var frontRightMotor: DcMotor
-    private var backRightMotor: DcMotor
+    private var frontLeftMotord: DcMotor
+    private var backLeftMotord: DcMotor
+    private var frontRightMotord: DcMotor
+    private var backRightMotord: DcMotor
     private var armBeltMotor: DcMotorEx
     private var pulleyMotor1: DcMotorEx
     private var pulleyMotor2: DcMotorEx
@@ -34,10 +34,10 @@ open class Hardware(private var opMode: LinearOpMode) {
         //initialize motors
 
         //drivetrain motors
-        frontLeftMotor = myOpMode.hardwareMap.dcMotor.get("motor0")
-        backLeftMotor = myOpMode.hardwareMap.dcMotor.get("motor1") //S
-        frontRightMotor = myOpMode.hardwareMap.dcMotor.get("motor2") //S
-        backRightMotor = myOpMode.hardwareMap.dcMotor.get("motor3")
+        frontLeftMotord = myOpMode.hardwareMap.dcMotor.get("motor0")
+        backLeftMotord = myOpMode.hardwareMap.dcMotor.get("motor1") //S
+        frontRightMotord = myOpMode.hardwareMap.dcMotor.get("motor2") //S
+        backRightMotord = myOpMode.hardwareMap.dcMotor.get("motor3")
 
         //arm motors
         armBeltMotor = myOpMode.hardwareMap.dcMotor.get("motor0b") as DcMotorEx  //0b motor encoder has sideways odometry pod
@@ -45,10 +45,10 @@ open class Hardware(private var opMode: LinearOpMode) {
         pulleyMotor2 = myOpMode.hardwareMap.dcMotor.get("motor2b") as DcMotorEx
         //motor 3b contains final odo encoder
 
-        frontLeftMotor.mode = DcMotor.RunMode.RUN_USING_ENCODER
-        backLeftMotor.mode = DcMotor.RunMode.RUN_USING_ENCODER
-        frontRightMotor.mode = DcMotor.RunMode.RUN_USING_ENCODER
-        backRightMotor.mode = DcMotor.RunMode.RUN_USING_ENCODER
+        frontLeftMotord.mode = DcMotor.RunMode.RUN_USING_ENCODER
+        backLeftMotord.mode = DcMotor.RunMode.RUN_USING_ENCODER
+        frontRightMotord.mode = DcMotor.RunMode.RUN_USING_ENCODER
+        backRightMotord.mode = DcMotor.RunMode.RUN_USING_ENCODER
 
         //no encoder cables long enough
         //i think some of these motors share an encoder with the dead wheels
@@ -61,8 +61,8 @@ open class Hardware(private var opMode: LinearOpMode) {
         armServo.scaleRange(0.0,0.75) //DO NOT CHANGE
 
         //reverse as needed (this may need to be the left wheels rather than the right)
-        frontRightMotor.direction = (DcMotorSimple.Direction.REVERSE)
-        backRightMotor.direction = (DcMotorSimple.Direction.REVERSE)
+        frontRightMotord.direction = (DcMotorSimple.Direction.REVERSE)
+        backRightMotord.direction = (DcMotorSimple.Direction.REVERSE)
 
         //update telemetry
         val message = "Hardware Initialized"
@@ -93,10 +93,10 @@ open class Hardware(private var opMode: LinearOpMode) {
         }
 
         //send values to motors
-        frontLeftMotor.power = flp
-        frontRightMotor.power = frp
-        backLeftMotor.power = blp
-        backRightMotor.power = brp
+        frontLeftMotord.power = flp
+        frontRightMotord.power = frp
+        backLeftMotord.power = blp
+        backRightMotord.power = brp
 
         //update telemetry
         myOpMode.telemetry.addData("Drive", drive)
