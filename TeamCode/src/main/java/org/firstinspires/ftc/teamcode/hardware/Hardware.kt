@@ -52,9 +52,9 @@ open class Hardware(private var opMode: LinearOpMode) {
 
         //no encoder cables long enough
         //i think some of these motors share an encoder with the dead wheels
-        //armBeltMotor.mode = DcMotor.RunMode.RUN_TO_POSITION
-        //pulleyMotor1.mode = DcMotor.RunMode.RUN_TO_POSITION
-        //pulleyMotor2.mode = DcMotor.RunMode.RUN_TO_POSITION
+        armBeltMotor.zeroPowerBehavior = DcMotor.ZeroPowerBehavior.BRAKE
+        pulleyMotor1.zeroPowerBehavior = DcMotor.ZeroPowerBehavior.BRAKE
+        pulleyMotor2.zeroPowerBehavior = DcMotor.ZeroPowerBehavior.BRAKE
 
         //servos
         armServo = myOpMode.hardwareMap.servo.get("servo0")
@@ -134,12 +134,12 @@ open class Hardware(private var opMode: LinearOpMode) {
     }
 
     fun arm(height: Double, belt: Double){
-        pulleyMotor1.power = height
+        pulleyMotor1.power = height*0.5
         pulleyMotor2.power = pulleyMotor1.power
         myOpMode.telemetry.addData("Arm Power", pulleyMotor2.power)
 
 
-        armBeltMotor.power = belt
+        armBeltMotor.power = belt*0.5
         myOpMode.telemetry.addData("Belt Power", armBeltMotor.power)
 
 //            1 -> {
