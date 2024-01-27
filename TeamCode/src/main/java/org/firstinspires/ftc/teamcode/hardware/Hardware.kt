@@ -139,7 +139,7 @@ open class Hardware(private var opMode: LinearOpMode) {
         myOpMode.telemetry.addData("Arm Power", pulleyMotor2.power)
 
 
-        armBeltMotor.power = belt*0.5
+        armBeltMotor.power = belt
         myOpMode.telemetry.addData("Belt Power", armBeltMotor.power)
 
 //            1 -> {

@@ -10,7 +10,7 @@ class Trajectories {
     object rrtraj{
         //call trajectory builder function from drive
         var drive: SampleMecanumDrive  = SampleMecanumDrive(hardwareMap)
-        val absYVal: Double = 58.5 //think about where robot will be placed FIX AFTER BOT BUILT
+        val absYVal: Double = 62.0 //think about where robot will be placed FIX AFTER BOT BUILT
 
         /**
          * somehow squeeze drive.setPoseEstimate(startPose) in there??
