@@ -135,11 +135,11 @@ public class MeepMeepTesting {
                 .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 15)
                 .followTrajectorySequence(drive ->
                         drive.trajectorySequenceBuilder(new Pose2d(12.0, -58.5, Math.toRadians(90)))
-                                .waitSeconds(1)
+                                //.waitSeconds(1)
                                 .splineTo(new Vector2d(20.30, -43.50), Math.toRadians(68.05))
-                                .waitSeconds(1)
-                                .splineToConstantHeading(new Vector2d(29.08, -60.05), Math.toRadians(-11.67))
-                                .splineToLinearHeading(new Pose2d(48.50, -42.00, Math.toRadians(0.00)), Math.toRadians(0.00))
+                                //.waitSeconds(1)
+                                //.splineToConstantHeading(new Vector2d(29.08, -60.05), Math.toRadians(-11.67))
+                                //.splineToLinearHeading(new Pose2d(48.50, -42.00, Math.toRadians(0.00)), Math.toRadians(0.00))
 
                                 .build()
                 );
@@ -157,9 +157,36 @@ public class MeepMeepTesting {
                                 .splineToConstantHeading(new Vector2d(12.00, 58.50), Math.toRadians(270.00))
                                 .waitSeconds(1)
                                 .splineTo(new Vector2d(48.50, 35.00), Math.toRadians(0.00))
+                                .build()
+                );
+
+        RoadRunnerBotEntity innerred1 = new DefaultBotBuilder(meepMeep)
+                // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
+                .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 15)
+                .followTrajectorySequence(drive ->
+                        drive.trajectorySequenceBuilder(new Pose2d(12.0, 58.5, Math.toRadians(270)))
+                                .waitSeconds(1)
+                                .splineTo(new Vector2d(20.30, 43.50), Math.toRadians(-68.05))
+                                //.waitSeconds(1)
+                                //.splineToConstantHeading(new Vector2d(29.08, 57.05), Math.toRadians(-11.67))
+                                //.splineToLinearHeading(new Pose2d(48.50, 42.00, Math.toRadians(0.00)), Math.toRadians(0.00))
+                                .build()
+                );
+
+        RoadRunnerBotEntity innerred3 = new DefaultBotBuilder(meepMeep)
+                // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
+                .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 15)
+                .followTrajectorySequence(drive ->
+                        drive.trajectorySequenceBuilder(new Pose2d(12.0, 58.5, Math.toRadians(270)))
+                                //.waitSeconds(1)
+                                .splineTo(new Vector2d(20.30, 43.50), Math.toRadians(-68.05))
+                                //.waitSeconds(1)
+                                //.splineToConstantHeading(new Vector2d(29.08, -60.05), Math.toRadians(-11.67))
+                                //.splineToLinearHeading(new Pose2d(48.50, -42.00, Math.toRadians(0.00)), Math.toRadians(0.00))
 
                                 .build()
                 );
+
 
         // LEARN TO SPLIT TRAJECTORIES EVENTUALLY
         // LOTS O' WORK TO DO!!!
@@ -168,8 +195,8 @@ public class MeepMeepTesting {
         meepMeep.setBackground(MeepMeep.Background.FIELD_CENTERSTAGE_JUICE_DARK)
                 .setDarkMode(true)
                 .setBackgroundAlpha(0.95f)
-                //.addEntity(innerred2)
-                .addEntity(outerblue3)
+                .addEntity(innerred3)
+                //.addEntity(innerblue3)
                 .start();
     }
 }
